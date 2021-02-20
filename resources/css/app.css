@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind compomemts;
 @tailwind utilities;
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+h1,h2,h3,h4,h5,h6{
+    color:#616574;
+}
+
+p,label,li,a{
+    color: #6B728A
+}
+  

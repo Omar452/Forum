@@ -31133,6 +31133,18 @@ video {
           animation: bounce 1s infinite;
 }
 
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+h1,h2,h3,h4,h5,h6{
+  color:#616574;
+}
+
+p,label,li,a{
+  color: #6B728A
+}
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-y-reverse: 0;
@@ -183682,3 +183694,4 @@ video {
             animation: bounce 1s infinite;
   }
 }
+  

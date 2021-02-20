@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
+    public function __construct()
+    {
+       $this->middleware('auth')->except(['index', 'show']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +29,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('subjects.create');
     }
 
     /**
@@ -36,7 +40,15 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required|string|min:5',
+            'content' => 'required|string|min:10'
+        ]);
+
+        
+        $subject = auth()->user()->subjects()->create($data);
+
+        return redirect()->route('subjects.show', compact('subject'));
     }
 
     /**
@@ -47,7 +59,7 @@ class SubjectController extends Controller
      */
     public function show(Subject $subject)
     {
-        //
+        return view('subjects.show', compact('subject'));
     }
 
     /**

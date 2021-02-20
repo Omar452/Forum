@@ -8,21 +8,19 @@
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
-<body class="bg-gray-200">
-    <nav class="p-6 bg-white flex justify-between mb-6">
+<body class="bg-green-100">
+    <nav class="px-10 py-6 bg-white flex justify-between mb-6">
         
-        <p class="text-xl font-semibold">LaraForum</p>
+        <p class="text-xl font-semibold ml-5">LaraForum</p>
 
-        <ul class="flex item-center">
-            <li><a class="p-3" href="{{route('subjects.index')}}">Home</a></li>
+        <ul class="flex item-center mr-5">
+            <li><a class="p-3" href="{{route('home')}}">Forum</a></li>
             @guest
             <li><a class="p-3" href="{{route('login')}}">Login</a></li>
             <li><a class="p-3" href="{{route('register')}}">Register</a></li>
             @endguest
             @auth
-            <li><a class="p-3" href="{{route('dashboard')}}">Dashboard</a></li>
-            <li><a class="p-3" href="">{{auth()->user()->name}}</a></li>
-            <li><a class="p-3" href="{{route('logout')}}">Logout</a></li>
+            <x-dropdownComponent />
             @endauth
         </ul>
     </nav>    

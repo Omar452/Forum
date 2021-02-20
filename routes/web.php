@@ -13,12 +13,10 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 Route::resource('/subjects', SubjectController::class);
 
-Route::get('/', function () {
-    return view('subjects.index');
-});
+Route::get('/', [SubjectController::class, 'index'])->name('home');
