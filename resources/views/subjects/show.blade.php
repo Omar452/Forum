@@ -6,5 +6,5 @@
             <x-subjectComponent :subject="$subject" />
         <div>
     </div>
-
+    <x-modalComponent :subject="$subject"/>
 @endsection

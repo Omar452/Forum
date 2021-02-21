@@ -48,7 +48,7 @@ class SubjectController extends Controller
         
         $subject = auth()->user()->subjects()->create($data);
 
-        return redirect()->route('subjects.show', compact('subject'));
+        return redirect()->route('subjects.show', $subject);
     }
 
     /**
@@ -70,7 +70,7 @@ class SubjectController extends Controller
      */
     public function edit(Subject $subject)
     {
-        //
+        return view('subjects.edit', compact('subject'));
     }
 
     /**
@@ -82,7 +82,15 @@ class SubjectController extends Controller
      */
     public function update(Request $request, Subject $subject)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required|string|min:5',
+            'content' => 'required|string|min:10'
+        ]);
+
+        
+        $subject->update($data);
+
+        return redirect()->route('subjects.show', $subject);
     }
 
     /**

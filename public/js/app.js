@@ -1841,6 +1841,20 @@ module.exports = {
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+/* DELETE SUBJECT MODAL*/
+
+
+var modal = document.querySelector('.modal');
+var showModal = document.querySelector('.show-modal');
+var closeModal = document.querySelectorAll('.close-modal');
+showModal.addEventListener('click', function () {
+  modal.classList.remove('hidden');
+});
+closeModal.forEach(function (close) {
+  close.addEventListener('click', function () {
+    modal.classList.add('hidden');
+  });
+});
 
 /***/ }),
 
