@@ -1855,6 +1855,7 @@ closeModal.forEach(function (close) {
     modal.classList.add('hidden');
   });
 });
+console.log(modal);
 
 /***/ }),
 

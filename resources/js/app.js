@@ -2,7 +2,6 @@ require('./bootstrap');
 
 /* DELETE SUBJECT MODAL*/
 const modal = document.querySelector('.modal');
-
 const showModal = document.querySelector('.show-modal');
 const closeModal = document.querySelectorAll('.close-modal');
 
@@ -14,4 +13,6 @@ closeModal.forEach(close => {
     close.addEventListener('click', function (){
         modal.classList.add('hidden')
     });
-}); 
+});
+
+console.log(modal)

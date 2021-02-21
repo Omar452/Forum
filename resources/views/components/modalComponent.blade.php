@@ -14,7 +14,7 @@
     </div>
     <div class="flex justify-end items-center w-100 border-t p-3">
       <button class="bg-green-300 hover:bg-green-400 px-3 py-1 rounded text-white mr-1 focus:outline-none close-modal">Cancel</button>
-      <form action="{{route('subjects.destroy', $subject)}}" method="POST">
+      <form class="mb-0" action="{{route('subjects.destroy', $subject)}}" method="POST">
           @csrf
           @method('DELETE')
           <button class="bg-red-300 hover:bg-red-400 px-3 py-1 rounded text-white focus:outline-none">Delete</button>

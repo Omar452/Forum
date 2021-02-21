@@ -70,6 +70,8 @@ class SubjectController extends Controller
      */
     public function edit(Subject $subject)
     {
+        $this->authorize('update', $subject);
+
         return view('subjects.edit', compact('subject'));
     }
 
@@ -82,6 +84,8 @@ class SubjectController extends Controller
      */
     public function update(Request $request, Subject $subject)
     {
+        $this->authorize('update',  $subject);
+
         $data = $request->validate([
             'title' => 'required|string|min:5',
             'content' => 'required|string|min:10'
@@ -101,6 +105,10 @@ class SubjectController extends Controller
      */
     public function destroy(Subject $subject)
     {
-        //
+        $this->authorize('delete', $subject);
+
+        $subject->delete();
+        
+        return redirect()->route('home');
     }
 }

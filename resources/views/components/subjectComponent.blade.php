@@ -11,12 +11,16 @@
 
     
     <div class="flex justify-start text-sm mt-5">
+        @can('update', $subject)
         <div class="mr-2">
             <a class="text-yellow-600" href="{{route('subjects.edit', $subject)}}">Edit</a>
         </div>
+        @endcan
+        @can('delete', $subject)
         <div>
             <button class="show-modal bg-none text-red-500 focus:outline-none">Delete</button>
         </div>
+        @endcan
     </div>
     
 </div>

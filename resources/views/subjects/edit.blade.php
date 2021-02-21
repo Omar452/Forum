@@ -8,7 +8,7 @@
             <div class="w-2/3 bg-white p-8 mb-4">
             <form action="{{route('subjects.update', $subject)}}" method="POST">
                 @csrf
-                @method('PATCH')
+                @method('PUT')
                 <div class="flex flex-col focus mb-4">
                     <x-labelComponent for="content">Title:</x-labelComponent>
                     <x-inputComponent class="@error('title') is-invalid @enderror" type="text" id="title" name="title" value="{{old('title') ?? $subject->title}}" required autofocus/>

@@ -6,6 +6,7 @@
         <div class="w-2/3">
             @foreach ($subjects as $subject)
                 <x-subjectComponent :subject="$subject" />
+                <x-modalComponent :subject="$subject"/>
             @endforeach
             {{$subjects->links()}}
         <div>
