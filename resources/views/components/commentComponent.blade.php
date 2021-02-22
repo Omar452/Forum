@@ -2,13 +2,21 @@
 
 <div class="flex flex-col">
     @forelse($subject->comments as $comment)
-    <div class="bg-gray-100 p-2 my-2 w-3/4">
-        
+    <!--SUBJECT ANSWERS-->
+    <div class="bg-gray-100 p-2 my-2 w-3/4">     
         <div class="flex text-xs mb-5 ">
             <p>Posted the {{$comment->created_at->format('d/m/Y \a\t H:m')}} by <span class="text-bold">{{$comment->user->name}}</p></span>
         </div>
 
-        <p>{{$comment->content}}</p>
+        <div class="flex mb-5 justify-between items-center">
+            <p>{{$comment->content}}</p>
+            <!--VUEJS COMPONENT TO MARK COMMENTS AS SOLUTION-->
+            
+            <div id="app">
+                <solution-component subject="{{$subject->title}}" comment="{{$comment->id}}"></solution-component>
+            </div>
+            
+        </div>
 
         <div class="flex justify-start text-sm mt-5">
             @can('update', $comment)
@@ -28,6 +36,7 @@
         <button onclick="toggleReplyComment({{$comment->id}})" id="replyFormBtn-{{$comment->id}}" class="text-sm bg-gray-500 text-white px-2 py-1 rounded  hover:bg-gray-800">Reply to this comment</button>
     </div>
 
+    <!--REPLY TO COMMENT FORM-->
     <div id="replyFormDiv-{{$comment->id}}" class="hidden my-5 ml-5">
         <form action="{{route('comments.storeReply', $comment)}}" method="POST">
             @csrf
@@ -47,16 +56,20 @@
         </form>
     </div>
 
+    <!--REPLIES-->
     @foreach ($comment->comments as $reply)
     <div class="bg-gray-100 p-2 my-2 w-3/4 self-end">
         
-        <div class="flex text-xs mb-5">
+        <div class="flex text-xs mb-5 ">
             <p>Posted the {{$reply->created_at->format('d/m/Y \a\t H:m')}} by <span class="text-bold">{{$reply->user->name}}</p></span>
         </div>
 
-        <p>{{$reply->content}}</p>
+        <div class="flex mb-5 justify-between">
+            <p>{{$reply->content}}</p>
+            <div id="solution" subject="{{$subject}} comment="$comment"></div>
+        </div>
 
-        <div class="flex justify-start text-sm mt-5">
+        <div class="flex justify-start text-sm">
             @can('update', $reply)
             <div class="mr-2">
                 <a class="text-yellow-600" href="{{route('subjects.edit', $reply)}}">Edit</a>

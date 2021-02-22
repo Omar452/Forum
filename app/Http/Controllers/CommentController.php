@@ -54,4 +54,17 @@ class CommentController extends Controller
     {
         $this->authorize('delete', $comment);
     }
+
+    public function markedAsSolution(Subject $subject, Comment $comment)
+    {
+        if(auth()->user()->id === $subject->user_id){
+            $subject->solution = $comment->id;
+            $subject->save();
+
+            return response()->json(['success' => ['success' =>'Marked as solution']], 200);
+        }
+        else{
+            return response()->json(['errors' => ['error' => 'User not authorize to perform this action']], 401);
+        }
+    }
 }

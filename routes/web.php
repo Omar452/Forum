@@ -25,4 +25,6 @@ Route::put('/comments/{id}/edit', [CommentController::class,'edit'])->name('comm
 Route::delete('/comments/{comment}', [CommentController::class,'destroy'])->name('comments.destroy');
 Route::post('/reply/{comment}', [CommentController::class, 'storeReply'])->name('comments.storeReply');
 
+Route::post('/markedAsSolution/{subject}/{comment}', [CommentController::class, 'markedAsSolution'])->name('comments.markedAsSolution');
+
 Route::get('/', [SubjectController::class, 'index'])->name('home');

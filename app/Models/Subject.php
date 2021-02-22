@@ -16,12 +16,12 @@ class Subject extends Model
     {
         return $this->belongsTo(User::class);
     }
-
+    
     public function getRouteKeyName()
     {
         return 'title';
     }
-
+    
     public function comments()
     {
         return $this->morphMany('App\Models\Comment', 'commentable')->latest();

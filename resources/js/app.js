@@ -1,5 +1,17 @@
 require('./bootstrap');
 
+import axios from 'axios';
+
+/*VUE JS SETUP*/
+import { createApp } from 'vue';
+import SolutionComponent from './components/SolutionComponent.vue'
+createApp({
+    components: {
+        SolutionComponent
+    }
+}).mount('#app');
+
+
 /* DELETE SUBJECT MODAL*/
 const modal = document.querySelector('.modal');
 const showModal = document.querySelector('.show-modal');
