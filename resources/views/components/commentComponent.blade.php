@@ -11,10 +11,19 @@
         <div class="flex mb-5 justify-between items-center">
             <p>{{$comment->content}}</p>
             <!--VUEJS COMPONENT TO MARK COMMENTS AS SOLUTION-->
-            
-            <div id="app">
-                <solution-component subject="{{$subject->title}}" comment="{{$comment->id}}"></solution-component>
-            </div>
+            @auth
+                @if(!$subject->solution && $subject->user_id === auth()->user()->id)
+                    <div id="app">
+                        <solution-component subject="{{$subject->title}}" comment="{{$comment->id}}"></solution-component>
+                    </div>
+                @else
+                    @if($subject->solution && $subject->solution === $comment->id)
+                    <div class="text-center solutionDiv">
+                        <p class="bg-green-300 text-sm py-1 px-2 uppercase rounded-lg text-gray-900">marked as solution</p>
+                    </div>
+                    @endif
+                @endif
+            @endauth
             
         </div>
 
@@ -93,5 +102,12 @@
     function toggleReplyComment(id){
         let element = document.querySelector('#replyFormDiv-' + id);
         element.classList.toggle("hidden");
+    }
+
+    if(document.querySelector('.solutionDiv')){
+        let solutionDiv = document.querySelector('.solutionDiv');
+        console.log(solutionDiv.parentElement)
+        solutionDiv.parentElement.parentElement.style.border = "solid 2px #10B981";
+        solutionDiv.parentElement.parentElement.style.borderRadius = "5px";
     }
 </script>
