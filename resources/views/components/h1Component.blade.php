@@ -1,1 +1,1 @@
-<h1 class="block w-full text-center my-10 text-3xl uppercase">{{$slot}}</h1>
+<h1 class="block w-full text-center my-10 text-3xl uppercase font-semibold">{{$slot}}</h1>

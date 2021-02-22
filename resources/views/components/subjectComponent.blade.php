@@ -1,6 +1,6 @@
 @props(['subject' => $subject])
 
-<div class="bg-white p-4 m-2">
+<div class="bg-gray-100 p-4 m-2">
     <h4 class="border-b mb-2 font-semibold"><a class="hover:underline text-gray-800 text-lg" href="{{route('subjects.show', $subject)}}">{{$subject->title}}</a></h4>
     <p class="text-sm">{{$subject->content}}</p>
 

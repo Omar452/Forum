@@ -1855,7 +1855,12 @@ closeModal.forEach(function (close) {
     modal.classList.add('hidden');
   });
 });
-console.log(modal);
+/* SHOW REPLY COMMENT DIV  */
+
+function toggleReplyComment(id) {
+  var element = document.querySelector('#replyFormDiv-' + id);
+  element.classList.toggle("hidden");
+}
 
 /***/ }),
 

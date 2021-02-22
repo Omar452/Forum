@@ -21,4 +21,9 @@ class Subject extends Model
     {
         return 'title';
     }
+
+    public function comments()
+    {
+        return $this->morphMany('App\Models\Comment', 'commentable')->latest();
+    }
 }

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+ 
 
 @section('content')
 
@@ -17,7 +18,6 @@
                     @enderror
 
                 </div>
-                
 
                 <div class="flex flex-col focus">
                     <x-labelComponent for="content">Content:</x-labelComponent>
@@ -36,5 +36,7 @@
             </form>
         <div>
     </div>
+
+    
 
 @endsection
